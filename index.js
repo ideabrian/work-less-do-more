@@ -32,12 +32,12 @@ async function getNewToken(oAuth2Client) {
     output: process.stdout,
   });
 
-  const code = await rl.questionAsync('Enter the code form that page here: ');
+  const code = await rl.questionAsync('Enter the code from that page here: ');
   rl.close();
   const { tokens } = await oAuth2Client.getToken(code);
   oAuth2Client.setCredentials(tokens);
   fs.writeFileSync(TOKEN_PATH, JSON.stringify(tokens));
-  console.log('Token stored to', TOKEN_PATH);
+  console.log('Token stored to: ', TOKEN_PATH);
   return oAuth2Client;
 }
 
